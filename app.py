@@ -9,6 +9,8 @@ from routes.herramientas import herramientas_bp
 from routes.electricistas import electricistas_bp
 from routes.prestamos import prestamos_bp
 from routes.historial import historial_bp
+from sqlalchemy import inspect
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -32,3 +34,8 @@ if __name__ == "__main__":
         port=int(os.environ.get("PORT", 5000)),
         debug=False
     )
+    
+with app.app_context():
+    print("Creando tablas...")
+    db.create_all()
+    print("Tablas existentes:", inspect(db.engine).get_table_names())
