@@ -1,4 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 db = SQLAlchemy()
 
@@ -21,6 +23,8 @@ class Herramienta(db.Model):
     )
 
     observaciones = db.Column(db.Text)
+
+
 class Electricista(db.Model):
 
     __tablename__ = "electricistas"
@@ -35,8 +39,6 @@ class Electricista(db.Model):
         db.String(20),
         default="Activo"
     )
-
-from datetime import datetime
 
 
 class Prestamo(db.Model):
@@ -59,7 +61,9 @@ class Prestamo(db.Model):
 
     fecha_prestamo = db.Column(
         db.DateTime,
-        default=datetime.utcnow
+        default=lambda: datetime.now(
+            ZoneInfo("America/Argentina/Buenos_Aires")
+        )
     )
 
     fecha_devolucion = db.Column(

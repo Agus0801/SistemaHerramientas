@@ -19,7 +19,7 @@
                 {% for h in herramientas %}
 
                 <option value="{{ h.id }}">
-                    {{ h.nombre }} - {{ h.marca }}
+                    {{ h.nombre }}
                 </option>
 
                 {% endfor %}
@@ -69,7 +69,6 @@
         <tr>
 
             <th>Herramienta</th>
-            <th>Marca</th>
             <th>Electricista</th>
             <th>Fecha préstamo</th>
             <th>Acciones</th>
@@ -88,8 +87,6 @@
 
                 <td>{{ p.herramienta.nombre }}</td>
 
-                <td>{{ p.herramienta.marca }}</td>
-
                 <td>{{ p.electricista.nombre }}</td>
 
                 <td>{{ p.fecha_prestamo.strftime("%d/%m/%Y %H:%M") }}</td>
@@ -98,9 +95,7 @@
 
                     <a href="/prestamos/devolver/{{ p.id }}"
                        class="btn btn-success btn-sm">
-
                         Devolver
-
                     </a>
 
                 </td>
@@ -113,10 +108,8 @@
 
             <tr>
 
-                <td colspan="5" class="text-center">
-
+                <td colspan="4" class="text-center">
                     No hay herramientas prestadas.
-
                 </td>
 
             </tr>
