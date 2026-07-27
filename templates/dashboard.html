@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h1 class="fw-bold mb-4">
+    Dashboard
+</h1>
+
+<!-- Primera fila -->
+<div class="row g-4 mb-4">
+
+    <div class="col-lg-4">
+        <div class="card dashboard-card border-primary">
+            <div class="card-body">
+                <div class="titulo-card">
+                    Total Herramientas
+                </div>
+
+                <div class="numero-card">
+                    {{ total_herramientas }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card dashboard-card border-success">
+            <div class="card-body">
+                <div class="titulo-card">
+                    Disponibles
+                </div>
+
+                <div class="numero-card">
+                    {{ disponibles }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card dashboard-card border-warning">
+            <div class="card-body">
+                <div class="titulo-card">
+                    Préstamos Activos
+                </div>
+
+                <div class="numero-card">
+                    {{ prestamos_activos }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Segunda fila -->
+<div class="row g-4">
+
+    <div class="col-lg-4">
+        <div class="card dashboard-card border-info">
+            <div class="card-body">
+                <div class="titulo-card">
+                    Total Electricistas
+                </div>
+
+                <div class="numero-card">
+                    {{ electricistas_activos + electricistas_inactivos }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card dashboard-card border-success">
+            <div class="card-body">
+                <div class="titulo-card">
+                    Electricistas Activos
+                </div>
+
+                <div class="numero-card">
+                    {{ electricistas_activos }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card dashboard-card border-danger">
+            <div class="card-body">
+                <div class="titulo-card">
+                    Electricistas Inactivos
+                </div>
+
+                <div class="numero-card">
+                    {{ electricistas_inactivos }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

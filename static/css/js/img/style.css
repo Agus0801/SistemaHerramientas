@@ -1,0 +1,77 @@
+body{
+    background:red !important;
+}
+
+body{
+
+    font-size:20px;
+
+}
+
+.btn{
+
+    font-size:18px;
+
+}
+
+.table{
+
+    font-size:18px;
+
+}
+.dashboard-card{
+
+    height:180px;
+    border-radius:16px;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+.dashboard-card .card-body{
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+
+}
+
+.titulo-card{
+
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:.5px;
+    color:#555;
+
+}
+
+.numero-card{
+
+    font-size:70px;
+    font-weight:300;
+    color:#2b2b2b;
+
+}
+
+.card-header{
+
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+
+}
+
+.card-body p{
+
+    font-size:22px;
+    text-align:center;
+    margin-top:15px;
+
+}

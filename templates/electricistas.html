@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h1>👷 Electricistas</h1>
+
+<hr>
+
+<a href="/electricistas/nuevo" class="btn btn-primary mb-3">
+
+➕ Nuevo Electricista
+
+</a>
+
+<table class="table table-bordered table-striped bg-white">
+
+<thead>
+
+<tr>
+
+<th>Nombre</th>
+
+<th>Cuadrilla</th>
+
+<th>Estado</th>
+
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for e in electricistas %}
+
+<tr>
+
+<td>{{ e.nombre }}</td>
+
+<td>{{ e.cuadrilla }}</td>
+
+<td>
+
+{% if e.estado=="Activo" %}
+
+<span class="badge bg-success">
+
+Activo
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Inactivo
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a href="/electricistas/editar/{{ e.id }}"
+class="btn btn-warning btn-sm">
+
+Editar
+
+</a>
+
+<a href="/electricistas/eliminar/{{ e.id }}"
+class="btn btn-danger btn-sm"
+onclick="return confirm('¿Eliminar este electricista?')">
+
+Eliminar
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}

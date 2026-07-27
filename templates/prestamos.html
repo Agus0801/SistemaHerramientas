@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h1>📦 Préstamos</h1>
+
+<hr>
+
+<form action="/prestamos/nuevo" method="POST">
+
+    <div class="row">
+
+        <div class="col-md-5">
+
+            <label class="form-label">Herramienta</label>
+
+            <select name="herramienta" class="form-select" required>
+
+                {% for h in herramientas %}
+
+                <option value="{{ h.id }}">
+                    {{ h.nombre }} - {{ h.marca }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="col-md-5">
+
+            <label class="form-label">Electricista</label>
+
+            <select name="electricista" class="form-select" required>
+
+                {% for e in electricistas %}
+
+                <option value="{{ e.id }}">
+                    {{ e.nombre }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="col-md-2 d-flex align-items-end">
+
+            <button type="submit" class="btn btn-success w-100">
+                📦 Prestar
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
+
+<hr class="my-4">
+
+<h3>Herramientas Prestadas</h3>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>Herramienta</th>
+            <th>Marca</th>
+            <th>Electricista</th>
+            <th>Fecha préstamo</th>
+            <th>Acciones</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% if prestamos %}
+
+            {% for p in prestamos %}
+
+            <tr>
+
+                <td>{{ p.herramienta.nombre }}</td>
+
+                <td>{{ p.herramienta.marca }}</td>
+
+                <td>{{ p.electricista.nombre }}</td>
+
+                <td>{{ p.fecha_prestamo.strftime("%d/%m/%Y %H:%M") }}</td>
+
+                <td>
+
+                    <a href="/prestamos/devolver/{{ p.id }}"
+                       class="btn btn-success btn-sm">
+
+                        Devolver
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="5" class="text-center">
+
+                    No hay herramientas prestadas.
+
+                </td>
+
+            </tr>
+
+        {% endif %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

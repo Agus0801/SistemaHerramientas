@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>Nuevo Electricista</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>Nombre</label>
+
+<input
+type="text"
+name="nombre"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Cuadrilla</label>
+
+<select
+name="cuadrilla"
+class="form-select">
+
+<option value="1">Cuadrilla 1</option>
+<option value="2">Cuadrilla 2</option>
+<option value="3">Cuadrilla 3</option>
+<option value="4">Cuadrilla 4</option>
+<option value="5">Cuadrilla 5</option>
+<option value="6">Cuadrilla 6</option>
+<option value="7">Cuadrilla 7</option>
+<option value="8">Cuadrilla 8</option>
+<option value="9">Cuadrilla 9</option>
+<option value="10">Cuadrilla 10</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Estado</label>
+
+<select
+name="estado"
+class="form-select">
+
+<option>Activo</option>
+<option>Inactivo</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-success">
+
+Guardar
+
+</button>
+
+<a href="/electricistas" class="btn btn-secondary">
+
+Cancelar
+
+</a>
+
+</form>
+
+{% endblock %}

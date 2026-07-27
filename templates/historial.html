@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h1>📜 Historial de Préstamos</h1>
+
+<hr>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>Herramienta</th>
+
+            <th>Marca</th>
+
+            <th>Electricista</th>
+
+            <th>Préstamo</th>
+
+            <th>Devolución</th>
+
+            <th>Estado</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% if prestamos %}
+
+        {% for p in prestamos %}
+
+        <tr>
+
+            <td>{{ p.herramienta.nombre }}</td>
+
+            <td>{{ p.herramienta.marca }}</td>
+
+            <td>{{ p.electricista.nombre }}</td>
+
+            <td>{{ p.fecha_prestamo.strftime("%d/%m/%Y %H:%M") }}</td>
+
+            <td>
+
+                {% if p.fecha_devolucion %}
+
+                    {{ p.fecha_devolucion.strftime("%d/%m/%Y %H:%M") }}
+
+                {% else %}
+
+                    -
+
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                {% if p.fecha_devolucion %}
+
+                    <span class="badge bg-success">
+
+                        Devuelta
+
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-warning text-dark">
+
+                        Prestada
+
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <tr>
+
+            <td colspan="6" class="text-center">
+
+                No hay registros.
+
+            </td>
+
+        </tr>
+
+    {% endif %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

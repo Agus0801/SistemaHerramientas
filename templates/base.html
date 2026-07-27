@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Sistema de Gestión de Herramientas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            overflow-x:hidden;
+            background:#f3f4f6;
+            font-family:Segoe UI, Arial, sans-serif;
+        }
+
+        /* =======================
+              MENÚ LATERAL
+        ======================== */
+
+        .sidebar{
+
+            width:260px;
+            height:100vh;
+            position:fixed;
+            background:#1f2937;
+            color:white;
+            box-shadow:4px 0 15px rgba(0,0,0,.15);
+
+        }
+
+        .sidebar h3{
+
+            padding:25px;
+            text-align:center;
+            font-weight:bold;
+            border-bottom:1px solid rgba(255,255,255,.15);
+
+        }
+
+        .sidebar a{
+
+            display:block;
+            color:white;
+            text-decoration:none;
+            padding:16px 25px;
+            font-size:18px;
+            transition:.2s;
+
+        }
+
+        .sidebar a:hover{
+
+            background:#374151;
+            padding-left:35px;
+
+        }
+
+        .content{
+
+            margin-left:260px;
+            padding:35px;
+
+        }
+
+        /* =======================
+             TARJETAS DASHBOARD
+        ======================== */
+
+        .dashboard-card{
+
+            height:220px;
+            border-radius:18px;
+            box-shadow:0 8px 20px rgba(0,0,0,.12);
+            transition:.25s;
+
+        }
+
+        .dashboard-card:hover{
+
+            transform:translateY(-6px);
+
+            box-shadow:0 15px 28px rgba(0,0,0,.18);
+
+        }
+
+        .dashboard-card .card-body{
+
+            height:100%;
+
+            display:flex;
+
+            flex-direction:column;
+
+            justify-content:center;
+
+            align-items:center;
+
+        }
+
+        .titulo-card{
+
+            font-size:28px;
+
+            font-weight:700;
+
+            text-align:center;
+
+            margin-bottom:25px;
+
+            color:#555;
+
+        }
+
+        .numero-card{
+
+            font-size:80px;
+
+            font-weight:800;
+
+            line-height:1;
+
+            color:#222;
+
+        }
+
+        .card-header{
+
+            font-size:26px;
+
+            font-weight:bold;
+
+            text-align:center;
+
+            background:white;
+
+        }
+
+        .card-body p{
+
+            font-size:22px;
+
+            text-align:center;
+
+            color:#666;
+
+            margin-top:20px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h3>🔧 Herramientas</h3>
+
+<a href="/">🏠 Dashboard</a>
+
+<a href="/herramientas">🔧 Herramientas</a>
+
+<a href="/electricistas">👷 Electricistas</a>
+
+<a href="/prestamos">📦 Préstamos</a>
+
+<a href="/historial">📜 Historial</a>
+
+</div>
+
+<div class="content">
+
+{% block contenido %}
+
+{% endblock %}
+
+</div>
+
+</body>
+
+</html>

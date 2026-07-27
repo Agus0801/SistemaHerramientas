@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2 class="mb-4">Editar Electricista</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+
+        <input
+            type="text"
+            class="form-control"
+            name="nombre"
+            value="{{ electricista.nombre }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Cuadrilla</label>
+
+        <select class="form-select" name="cuadrilla">
+
+            {% for i in range(1,11) %}
+
+            <option
+                value="Cuadrilla {{ i }}"
+                {% if electricista.cuadrilla == "Cuadrilla " ~ i %}selected{% endif %}>
+
+                Cuadrilla {{ i }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Estado</label>
+
+        <select class="form-select" name="estado">
+
+            <option value="Activo"
+            {% if electricista.estado=="Activo" %}selected{% endif %}>
+
+                Activo
+
+            </option>
+
+            <option value="Inactivo"
+            {% if electricista.estado=="Inactivo" %}selected{% endif %}>
+
+                Inactivo
+
+            </option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-success">
+
+        Guardar Cambios
+
+    </button>
+
+    <a href="{{ url_for('electricistas.listar') }}"
+       class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+
+{% endblock %}
