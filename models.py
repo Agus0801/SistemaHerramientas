@@ -2,12 +2,9 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-db = SQLAlchemy()
-
-
 def ahora_argentina():
     return datetime.now(ZoneInfo("America/Argentina/Buenos_Aires"))
-
+db = SQLAlchemy()
 
 class Herramienta(db.Model):
 
@@ -88,13 +85,13 @@ class Prestamo(db.Model):
     )
 
     fecha_prestamo = db.Column(
-        db.DateTime,
+        db.DateTime(timezone=True),
         default=ahora_argentina,
         nullable=False
     )
 
     fecha_devolucion = db.Column(
-        db.DateTime,
+        db.DateTime(timezone=True),
         nullable=True
     )
 
