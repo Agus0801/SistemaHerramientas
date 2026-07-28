@@ -48,6 +48,10 @@ def nuevo():
         fecha_prestamo=ahora_argentina()
     )
 
+    print("===================================")
+    print("Hora préstamo:", prestamo.fecha_prestamo)
+    print("===================================")
+
     db.session.add(prestamo)
     db.session.commit()
 
@@ -60,6 +64,10 @@ def devolver(id):
     prestamo = Prestamo.query.get_or_404(id)
 
     prestamo.fecha_devolucion = ahora_argentina()
+
+    print("===================================")
+    print("Hora devolución:", prestamo.fecha_devolucion)
+    print("===================================")
 
     herramienta = Herramienta.query.get_or_404(
         prestamo.herramienta_id
