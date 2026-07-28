@@ -25,6 +25,14 @@ def listar():
         fecha_devolucion=None
     ).all()
 
+    for p in prestamos:
+     print("====================================")
+     print("Base de datos :", repr(p.fecha_prestamo))
+     print("Valor         :", p.fecha_prestamo)
+     print("tzinfo        :", p.fecha_prestamo.tzinfo)
+     print("UTC offset    :", p.fecha_prestamo.utcoffset() if p.fecha_prestamo.tzinfo else None)
+     print("====================================")
+
     return render_template(
         "prestamos.html",
         herramientas=herramientas,
