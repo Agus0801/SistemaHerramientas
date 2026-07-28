@@ -11,6 +11,7 @@ from routes.herramientas import herramientas_bp
 from routes.electricistas import electricistas_bp
 from routes.prestamos import prestamos_bp
 from routes.historial import historial_bp
+from zoneinfo import ZoneInfo
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -48,4 +49,13 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=int(os.environ.get("PORT", 5000)),
         debug=False
+    )
+
+@app.template_filter("argtime")
+def argtime(fecha):
+    if fecha is None:
+        return ""
+
+    return fecha.astimezone(
+        ZoneInfo("America/Argentina/Buenos_Aires")
     )
