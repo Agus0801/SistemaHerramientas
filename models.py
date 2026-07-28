@@ -5,39 +5,64 @@ from zoneinfo import ZoneInfo
 db = SQLAlchemy()
 
 
+def ahora_argentina():
+    return datetime.now(ZoneInfo("America/Argentina/Buenos_Aires"))
+
+
 class Herramienta(db.Model):
 
     __tablename__ = "herramientas"
 
     id = db.Column(db.Integer, primary_key=True)
 
-    nombre = db.Column(db.String(100), nullable=False)
+    nombre = db.Column(
+        db.String(100),
+        nullable=False
+    )
 
-    marca = db.Column(db.String(100), nullable=False)
+    marca = db.Column(
+        db.String(100),
+        nullable=False
+    )
 
-    modelo = db.Column(db.String(100))
+    modelo = db.Column(
+        db.String(100)
+    )
 
     estado = db.Column(
         db.String(30),
-        default="Disponible"
+        default="Disponible",
+        nullable=False
     )
 
-    observaciones = db.Column(db.Text)
+    observaciones = db.Column(
+        db.Text
+    )
 
 
 class Electricista(db.Model):
 
     __tablename__ = "electricistas"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
 
-    nombre = db.Column(db.String(100), nullable=False)
+    nombre = db.Column(
+        db.String(100),
+        nullable=False
+    )
 
-    cuadrilla = db.Column(db.String(20), nullable=False)
+    cuadrilla = db.Column(
+        db.String(20),
+        nullable=False
+    )
 
     estado = db.Column(
         db.String(20),
-        default="Activo"
+        default="Activo",
+        nullable=False
     )
 
 
@@ -45,7 +70,10 @@ class Prestamo(db.Model):
 
     __tablename__ = "prestamos"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
 
     herramienta_id = db.Column(
         db.Integer,
@@ -61,9 +89,8 @@ class Prestamo(db.Model):
 
     fecha_prestamo = db.Column(
         db.DateTime,
-        default=lambda: datetime.now(
-            ZoneInfo("America/Argentina/Buenos_Aires")
-        )
+        default=ahora_argentina,
+        nullable=False
     )
 
     fecha_devolucion = db.Column(
@@ -71,6 +98,12 @@ class Prestamo(db.Model):
         nullable=True
     )
 
-    herramienta = db.relationship("Herramienta")
+    herramienta = db.relationship(
+        "Herramienta",
+        backref="prestamos"
+    )
 
-    electricista = db.relationship("Electricista")
+    electricista = db.relationship(
+        "Electricista",
+        backref="prestamos"
+    )
