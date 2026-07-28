@@ -33,7 +33,12 @@ for regla in app.url_map.iter_rules():
 print("=============================\n")
 
 if __name__ == "__main__":
-
+    with app.app_context():
+      db.create_all()
+ 
+      inspector = inspect(db.engine)
+      print(">>> Tablas existentes:", inspector.get_table_names())
+    
     app.run(
         host="0.0.0.0",
         port=int(os.environ.get("PORT", 5000)),
