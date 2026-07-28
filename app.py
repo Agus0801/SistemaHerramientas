@@ -10,11 +10,13 @@ from routes.herramientas import herramientas_bp
 from routes.electricistas import electricistas_bp
 from routes.prestamos import prestamos_bp
 from routes.historial import historial_bp
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
 db.init_app(app)
+migrate = Migrate(app, db)
 
 # Registrar Blueprints
 app.register_blueprint(dashboard_bp)
@@ -30,19 +32,8 @@ for regla in app.url_map.iter_rules():
 
 print("=============================\n")
 
-# Crear tablas y mostrar cuáles existen
-with app.app_context():
-    print(">>> Creando tablas...")
-    db.create_all()
-    print(">>> Tablas existentes:", inspect(db.engine).get_table_names())
-
 if __name__ == "__main__":
-    print("\n=== RUTAS REGISTRADAS ===")
 
-    for regla in app.url_map.iter_rules():
-        print(regla)
-
-    print("=========================\n")
     app.run(
         host="0.0.0.0",
         port=int(os.environ.get("PORT", 5000)),
